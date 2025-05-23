@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colour Palette Generator</title>
+    <link
+  href="https://fonts.googleapis.com/css?family=Lexend"
+  rel="stylesheet"
+  type="text/css" />
+    <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" />
+  </head>
+  <body>
+    <form method="POST" enctype="multipart/form-data">
+      {{form.csrf_token}}
+      <p>{{form.file()}}</p>
+      <p>{{form.submit()}}</p>
+    </form>
+
+    <table>
+      <caption>
+        The 10 most common colours in the uploaded image.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Colour</th>
+          <th scope="col">RGB(A)</th>
+          <th scope="col">HEX</th>
+          <th scope="col">Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if colours %} 
+          {% for colour in colours %}
+          <tr>
+            <td style="background-color:{{colour[2]}};"></td>
+            <td>{{colour[1]}}</td>
+            <td>{{colour[2]}}</td>
+            <td>{{colour[3]}}</td>
+          </tr>
+          {% endfor %} 
+        {% endif %}
+    </tbody>
+    </table>
+
+    <div>
+      {% if image %}
+      <img src="data:{{image.mimetype}};base64,{{image}}" />
+      {% else %}
+      <p>No image uploaded</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

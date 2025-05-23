@@ -1,0 +1,64 @@
+div {
+  height: 500px;
+  width: 500px;
+  padding-top: 20px
+}
+
+img {
+  width: 100%;
+}
+
+th,
+td {
+  padding: 2px;
+  text-align: center;
+
+}
+
+table {
+  border: 2px solid black;
+  table-layout: fixed;
+  width: 60%;
+  border-collapse: collapse;
+}
+
+thead th:nth-child(1) {
+  width: 15%;
+}
+
+thead th:nth-child(2) {
+  width: 15%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 15%;
+}
+
+html {
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+}
+
+thead th {
+  font-family: "Lexend", serif;
+}
+
+th {
+  letter-spacing: 2px;
+  border-bottom: 2px solid black;
+}
+
+td {
+  letter-spacing: 2px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+caption {
+  font-family: "Lexend", serif;
+}
