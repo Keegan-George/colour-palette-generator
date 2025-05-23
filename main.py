@@ -4,7 +4,7 @@ A website that creates a colour palette based on the 10 most common colours in a
 
 from os import urandom
 from file_upload_form import FileUploadForm
-from utils import allowed_file, process_file
+from utils import is_allowed_file, process_file
 from flask import Flask, render_template, request
 
 
@@ -23,7 +23,7 @@ def home():
     if form.validate_on_submit():
         file = request.files["file"]
 
-        if allowed_file(file.filename):
+        if is_allowed_file(file.filename):
             image, colours = process_file(file)
 
     return render_template("index.html", form=form, image=image, colours=colours)

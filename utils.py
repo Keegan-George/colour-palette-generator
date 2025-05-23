@@ -4,7 +4,7 @@ from io import BytesIO
 from base64 import b64encode
 
 
-def allowed_file(filename: str) -> bool:
+def is_allowed_file(filename: str) -> bool:
     """
     Return True if the filename is allowed. False otherwise.
     """
