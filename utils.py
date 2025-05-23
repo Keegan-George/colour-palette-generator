@@ -49,7 +49,7 @@ def frequent_colours_palette(
     return colour_palette
 
 
-def process_file(file):
+def process_image_file(file):
     """
     Process an image file returning its colour palette and base64 image string.
     """

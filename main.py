@@ -3,10 +3,10 @@ A website that creates a colour palette based on the 10 most common colours in a
 """
 
 from os import getenv
-from file_upload_form import FileUploadForm
-from utils import is_allowed_file, process_file
-from flask import Flask, render_template, request
 from dotenv import load_dotenv
+from file_upload_form import FileUploadForm
+from flask import Flask, render_template, request
+from utils import is_allowed_file, process_image_file
 
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ def home():
         img_file = request.files["file"]
 
         if is_allowed_file(img_file.filename):
-            image, colours = process_file(img_file)
+            image, colours = process_image_file(img_file)
 
     return render_template("index.html", form=form, image=image, colours=colours)
 
