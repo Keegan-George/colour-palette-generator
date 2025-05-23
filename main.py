@@ -21,10 +21,10 @@ def home():
     form = FileUploadForm()
 
     if form.validate_on_submit():
-        file = request.files["file"]
+        img_file = request.files["file"]
 
-        if is_allowed_file(file.filename):
-            image, colours = process_file(file)
+        if is_allowed_file(img_file.filename):
+            image, colours = process_file(img_file)
 
     return render_template("index.html", form=form, image=image, colours=colours)
 
