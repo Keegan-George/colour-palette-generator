@@ -13,7 +13,7 @@ def is_allowed_file(filename: str) -> bool:
 
 def frequent_colours_palette(
     img: Image.Image,
-) -> list[dict[int, tuple[int, int, int], str, int]]:
+) -> list[dict[tuple[int, int, int], str, str]]:
     """
     Return a colour palette of the most frequent colours in an image.
     Each dictionary item contains the pixel count, RGB values, HEX value, and percentage.
@@ -40,7 +40,7 @@ def frequent_colours_palette(
 
         colour_palette.append(
             {
-                "rgb": colour[1],
+                "rgb": rgb,
                 "hex": hex,
                 "percentage": percentage,
             }
@@ -51,7 +51,7 @@ def frequent_colours_palette(
 
 def process_file(file):
     """
-    Process an image file returning its colour palette and in image in base64
+    Process an image file returning its colour palette and base64 image string.
     """
 
     # load image into memory and convert to file-like memory object
