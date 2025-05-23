@@ -33,9 +33,10 @@ def frequent_colours_palette(
     # create colour palette
     colour_palette = []
     for colour in frequent_colours:
-        r, g, b, *a = colour[1]
+        count, rgb = colour
+        percentage = f"{count / num_pixels:.2%}"
+        r, g, b, *a = rgb
         hex = f"#{r:02x}{g:02x}{b:02x}"
-        percentage = f"{colour[0] / num_pixels:.2%}"
 
         colour_palette.append(
             {
