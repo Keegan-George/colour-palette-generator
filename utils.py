@@ -39,7 +39,6 @@ def frequent_colours_palette(
 
         colour_palette.append(
             {
-                "count": colour[0],
                 "rgb": colour[1],
                 "hex": hex,
                 "percentage": percentage,
