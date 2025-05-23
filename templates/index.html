@@ -33,10 +33,10 @@
         {% if colours %} 
           {% for colour in colours %}
           <tr>
-            <td style="background-color:{{colour[2]}};"></td>
-            <td>{{colour[1]}}</td>
-            <td>{{colour[2]}}</td>
-            <td>{{colour[3]}}</td>
+            <td style="background-color:{{colour.hex}};"></td>
+            <td>{{colour.rgb}}</td>
+            <td>{{colour.hex}}</td>
+            <td>{{colour.percentage}}</td>
           </tr>
           {% endfor %} 
         {% endif %}

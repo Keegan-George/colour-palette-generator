@@ -1,5 +1,7 @@
 from config import *
 from PIL import Image
+from io import BytesIO
+from base64 import b64encode
 
 
 def allowed_file(filename: str) -> bool:
@@ -9,12 +11,12 @@ def allowed_file(filename: str) -> bool:
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def most_frequent_colours(
+def frequent_colours_palette(
     img: Image.Image,
-) -> list[tuple[int, tuple[int, int, int], str]]:
+) -> list[dict[int, tuple[int, int, int], str, int]]:
     """
-    Return a list of the most common colours in an image.
-    Each list item contains the colour frequency, RGB values, HEX value, and percentage in that order.
+    Return a colour palette of the most frequent colours in an image.
+    Each dictionary item contains the pixel count, RGB values, HEX value, and percentage.
     """
 
     # number of pixels in the image
@@ -25,7 +27,7 @@ def most_frequent_colours(
     colours = img.getcolors(maxcolors=num_pixels)
     colours.sort(reverse=True)
 
-    # keep only the top most frequent colours
+    # keep only the most frequent colours
     frequent_colours = colours[:NUMBER_OF_COLOURS]
 
     # create colour palette
@@ -44,4 +46,24 @@ def most_frequent_colours(
             }
         )
 
-    return frequent_colours
+    return colour_palette
+
+
+def process_file(file):
+    """
+    Process an image file returning its colour palette and in image in base64
+    """
+
+    # load image into memory and convert to file-like memory object
+    img_data = BytesIO(file.read())
+
+    # create Image object
+    img = Image.open(img_data)
+
+    # get most frequent colours of the image
+    colours = frequent_colours_palette(img)
+
+    # convert image to base64 string and utf-8 decode for display in browser
+    img_base64 = b64encode(img_data.getvalue()).decode("utf-8")
+
+    return img_base64, colours
