@@ -2,16 +2,18 @@
 A website that creates a colour palette based on the 10 most common colours in an uploaded image.
 """
 
-from os import urandom
+from os import getenv
 from file_upload_form import FileUploadForm
 from utils import is_allowed_file, process_file
 from flask import Flask, render_template, request
+from dotenv import load_dotenv
 
 
 app = Flask(__name__)
 
-# secret key generation for form usage
-app.config["SECRET_KEY"] = urandom(32)
+# set secret key
+load_dotenv()
+app.config["SECRET_KEY"] = getenv("SECRET_KEY")
 
 
 @app.route("/", methods=["GET", "POST"])
