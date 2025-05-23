@@ -3,9 +3,9 @@ A website that creates a colour palette based on the 10 most common colours in a
 """
 
 from os import urandom
-from flask import Flask, render_template, request
 from file_upload_form import FileUploadForm
 from utils import allowed_file, process_file
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -16,19 +16,15 @@ app.config["SECRET_KEY"] = urandom(32)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    form = FileUploadForm()
     image = None
     colours = None
+    form = FileUploadForm()
 
     if form.validate_on_submit():
         file = request.files["file"]
 
         if allowed_file(file.filename):
-            img_base64, colours = process_file(file)
-
-            return render_template(
-                "index.html", form=form, image=img_base64, colours=colours
-            )
+            image, colours = process_file(file)
 
     return render_template("index.html", form=form, image=image, colours=colours)
 
