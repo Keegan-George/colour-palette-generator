@@ -61,9 +61,9 @@ def process_file(file):
     img = Image.open(img_data)
 
     # get most frequent colours of the image
-    colours = frequent_colours_palette(img)
+    colour_palette = frequent_colours_palette(img)
 
     # convert image to base64 string and utf-8 decode for display in browser
     img_base64 = b64encode(img_data.getvalue()).decode("utf-8")
 
-    return img_base64, colours
+    return img_base64, colour_palette
