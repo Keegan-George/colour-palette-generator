@@ -16,7 +16,7 @@ def frequent_colours_palette(
 ) -> list[dict[tuple[int, int, int], str, str]]:
     """
     Return a colour palette of the most frequent colours in an image.
-    Each dictionary item contains the pixel count, RGB values, HEX value, and percentage.
+    Each colour is a dictionary item containing its RGB values, its HEX value, and its percentage of all colours in the image.
     """
 
     # number of pixels in the image
