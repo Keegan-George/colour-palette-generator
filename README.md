@@ -9,7 +9,7 @@ This website creates a colour palette based on the image that the user uploads.
 3. Click **Choose File** and select an image
 4. Click the **Submit** button to generate the colour palette
 
-_By default 10 colours are generated but this can be changed by modifying the NUMBER_OF_COLOURS parameter, in config.py. _
+_By default 10 colours are generated but this can be changed by modifying the NUMBER_OF_COLOURS parameter, in config.py._
 
 
 ## Example
