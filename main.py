@@ -1,5 +1,5 @@
 """
-A website that creates a colour palette based on the 10 most common colours in an uploaded image.
+A website that creates a colour palette based on the most common colours in an uploaded image.
 """
 
 from os import getenv

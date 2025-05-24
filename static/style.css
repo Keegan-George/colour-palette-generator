@@ -1,7 +1,7 @@
 div {
   height: 500px;
   width: 500px;
-  padding-top: 20px
+  padding-top: 20px;
 }
 
 img {
@@ -12,7 +12,6 @@ th,
 td {
   padding: 2px;
   text-align: center;
-
 }
 
 table {
